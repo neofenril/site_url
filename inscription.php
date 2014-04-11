@@ -17,7 +17,7 @@ MSG;
   // formulaire d'inscription
   echo "<form method=\"post\" name=\"enreg\" action=\"" . $_SERVER['PHP_SELF'] . "\" onsubmit=\"return validation();\">";
   echo <<< YOP
-              <table style="left:30%;top:25%;width:40%;">
+              <table style="left:35%;top:40%;width:30%;height:30%;">
 		<tr>
 			<td>Nom :</td>
 			<td><input type="text" name="nom" value="$nom"></td>

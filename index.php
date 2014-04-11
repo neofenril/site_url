@@ -8,7 +8,7 @@ enteteTitreHTML("ConvertParadize");
 function connecte(){
 	echo "<form method=\"post\" action=\"" . $_SERVER['PHP_SELF'] . "\" name=\"connexion\">";
 	echo <<< END
-			<table style="left:70%;top:25%;width:20%;">
+			<table style="left:70%;top:45%;width:20%;">
 				<tr>
 					<td>Pseudo :</td>
 				</tr>
@@ -29,7 +29,7 @@ function connecte(){
 		</form>
 
 		<form method="get" action="inscription.php" name="enregistrement">
-			<table style="left:70%;top:40%;width:20%;">
+			<table style="left:70%;top:60%;width:20%;">
 				<tr>
 					<td><input type="submit" value="Inscription !" /></td>
 				</tr>
@@ -42,7 +42,7 @@ function url(){
 
 	echo <<< END
 			<form method="get" action="film.php" name="url">
-				<table style="left:10%;top:30%;width:40%;font-size:2em;">
+				<table style="left:10%;top:50%;width:40%;font-size:2em;">
 					<tr>
 						<td><h2>Votre URL :</h2></td>
 						<td><input type="text" name="raccourci" value="Entrez une URL"/></td>
@@ -92,7 +92,7 @@ function traiteConnexion(){
 MSG;
 	}else{	
 		echo <<< END
-			<div style="left:70%;top:25%;width:20%;">
+			<div class="div" style="left:55%;top:45%;width:40%;">
 				<h2>Vos URL Deja Raccourcies</h2>
 				<table>
 					<tr>
