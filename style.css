@@ -1,0 +1,121 @@
+* {
+ margin: 0;
+ padding: 0;
+}
+
+
+h1 {color: green; text-align: center;}
+h2 {color: black; font-size: 1.1em;}
+
+table{
+	background-color:#DCDCDC;
+	position: absolute;
+	left:18%;
+	font-size: 0.8em;
+	text-align:center;
+	width:63%;
+}
+
+.gras {
+    font-weight: bold;
+}
+
+.italique {
+    font-style: italic;
+}
+
+.msgerreur {
+    position: absolute;
+    top: 0px;
+    color: red;
+    font-weight: bold;
+    border:2px solid red;
+    width: 91%;
+}
+
+.msgerreur2 {
+	position: absolute;
+	top: 67%;
+	color: red;
+	font-weight: bold;
+	border:2px solid red;
+	width: 91%;
+}
+
+.msginfo {
+	position: absolute;
+	top: 0px;
+	color: #32CD32;
+    font-weight: bold;
+	border:3px solid #32CD32;
+	width: 91%;
+}
+
+.msgco{
+	color:white;
+	font-weight: bold;
+}
+
+body {
+	margin: 3% 0;
+}
+
+
+.centrale {
+	background-color:#DCDCDC;
+	font-size: 1.2em;
+	margin: 0 auto;
+	width: 91%;
+	min-height: 700px;
+	text-align:center;
+}
+
+.droite {
+	background: CadetBlue;
+	float: right;
+	width: 14%;
+	min-height: 600px;
+}
+
+.droite a{
+	background: #88898F;	
+	color: white;
+	display: block;
+	text-decoration: none;
+}
+
+.droite a:hover{
+	background: #3CB371;
+	color: black;
+}
+
+.gauche {
+	background: CadetBlue;
+	float: left;
+	width: 14%;
+	min-height: 600px;
+}
+
+.pied{
+	clear: both;
+	background: CadetBlue;
+	width: 100%;
+	text-align: center;
+}
+.pied a{
+	background: #88898F;	
+	color: white;
+	display: block;
+	width: 10%;
+	text-decoration: none;
+	float: left;
+}
+.pied a:hover{
+	background: #3CB371;
+	color: black;
+}
+
+
+
+
+

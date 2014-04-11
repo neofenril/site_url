@@ -1,0 +1,36 @@
+<?php
+require_once("config.inc.php");
+class Membre{
+	private $id;
+	private $nom;
+	private $prenom;
+	private $pseudo;
+	private $mail;
+	private $mdp;
+	private $profil;
+	
+	public static function insertion($p, $nom, $prenom, $pseudo, $mail, $mdp, $profil){
+		$requete = $p->prepare("INSERT INTO membres (nom, prenom, pseudo, mail, mdp, profil)	VALUES(:nom, :prenom, :pseudo, :mail, :mdp, :profil)");
+		$requete->bindParam('nom', $nom);
+		$requete->bindParam('prenom', $prenom);
+		$requete->bindParam('pseudo', $pseudo);
+		$requete->bindParam('mail', $mail);
+		$requete->bindParam('mdp', $mdp);
+		$requete->bindParam('profil', $profil);
+		$res = $requete->execute();
+		
+		return $res;
+	}
+	
+	public static function pseudo_existe($p, $pseudo){
+		$pseudo = '%' . $pseudo . '%';
+		$requete = $p->prepare("SELECT * FROM membres WHERE pseudo LIKE :pseudo;");
+		$requete->bindParam('pseudo', $pseudo);
+		$requete->execute();
+		$res = $requete->fetch(PDO::FETCH_OBJ);
+		$compteur = $requete->rowCount();
+
+		return $compteur;
+	}
+}
+?>
