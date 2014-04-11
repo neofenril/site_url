@@ -38,8 +38,10 @@ MSG;
 			<td>Mot de passe :</td>
 			<td><input type="password" name="password1"></td>
 		</tr>
+		<tr>
+			<td><input class="medskip" type="submit" value="Je crée mon compte !"></td>
+		</tr>
 		</table>
-		<input class="medskip" type="submit" value="Je crée mon compte !">
 		<input type="hidden" name="fromform" value="true">
 	</form>
 YOP;
@@ -120,7 +122,7 @@ function traiteFormulaire(){
   
   if ($erreur){
     enteteTitreHTML("Inscription");
-    echo '<div style="margin-top:25%;">';
+    echo '<div style="margin-top:25%; margin-left:5%;">';
     genereFormulaireInscriptionMembre($message_erreur, stripslashes($nom), stripslashes($prenom), stripslashes($pseudo), stripslashes($mail));
     echo "<br /><a href=\"index.php\">retour</a><br />";
     echo '</div>';
@@ -164,7 +166,7 @@ if (isset($_POST['fromform'])) {
 // affichage formulaire inscription
 else {
   enteteTitreHTML("Inscription");
-  echo '<div style="margin-top:25%;">';
+  echo '<div style="margin-top:25%; margin-left:5%;">';
   genereFormulaireInscriptionMembre();
   echo "<br /><a href=\"index.php\">retour</a><br />";
   echo '</div>';
