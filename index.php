@@ -42,9 +42,9 @@ function url(){
 
 	echo <<< END
 			<form method="get" action="film.php" name="url">
-				<table style="left:10%;top:25%;width:40%;">
+				<table style="left:10%;top:30%;width:40%;font-size:2em;">
 					<tr>
-						<td>Votre URL :</td>
+						<td><h2>Votre URL :</h2></td>
 						<td><input type="text" name="raccourci" value="Entrez une URL"/></td>
 						<td><input type="submit" value="Raccourcir" /></td>
 					</tr>

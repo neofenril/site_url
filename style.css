@@ -16,6 +16,11 @@ table{
 	width:63%;
 }
 
+div{
+	position: absolute;
+	text-align:center;
+}
+
 .gras {
     font-weight: bold;
 }
