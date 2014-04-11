@@ -3,12 +3,12 @@
  padding: 0;
 }
 
-
-h1 {color: green; text-align: center;}
+html{background-color:#8FBC8F;}
+h1 {color: Teal; text-align: center; Font-Family: Cursive; text-shadow:0.1em 0.1em 0.05em #333;}
 h2 {color: black; font-size: 1.1em;}
 
 table{
-	background-color:#DCDCDC;
+	background-color:#F5DEB3;
 	position: absolute;
 	left:18%;
 	font-size: 0.8em;
