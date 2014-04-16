@@ -19,7 +19,7 @@ function connecte(){
 					<td>Mot de Passe :</td>
 				</tr>
 				<tr>
-					<td><input type="text" name="mdp"/></td>
+					<td><input type="password" name="mdp"/></td>
 				</tr>
 				<tr>
 					<td><input type="submit" value="Connexion !" /></td>
@@ -41,14 +41,15 @@ END;
 function url(){
 
 	echo <<< END
-			<form method="get" action="film.php" name="url">
+			<form method="post" action="index.php" name="url">
 				<table style="left:10%;top:50%;width:40%;font-size:2em;">
 					<tr>
 						<td><h2>Votre URL :</h2></td>
-						<td><input type="text" name="raccourci" value="Entrez une URL"/></td>
+						<td><input type="text" name="rac" value="Entrez une URL"/></td>
 						<td><input type="submit" value="Raccourcir" /></td>
 					</tr>
 				</table>
+				<input type="hidden" name="raccourci" value="true">
 			</form>
 END;
 }
@@ -83,6 +84,7 @@ function traiteConnexion(){
 			$erreur = true;
 		}
 	}
+	
 	if ($erreur){
 		connecte();
 		echo <<< MSG
@@ -107,12 +109,56 @@ END;
 }
 
 
+function traiteURL(){
+	$message = "";
+	$erreur = false;
+	
+	$url = trim($_POST["rac"]);
+	$code = $url;
+	$url = strip_tags(trim($url));
+	
+	$courte = "http://www.ConPar.com/";
+	
+	if ($url == "") {
+		$message .= "Entrez une URL.<br>";
+		$erreur = true;
+	}
+ 
+	if ($erreur){
+		connecte();
+		echo <<< MSG
+			<div class="msgerreur2">
+				$message
+			</div>
+MSG;
+	}else{	
+		$code = sha1($code);
+		$min = rand (0, 35);
+		$code = substr($code, $min, 5);
+		$courte .= $code;
+		echo <<< END
+			<form method="post" action="index.php" name="url">
+				<table style="left:10%;top:70%;width:40%;font-size:2em;">
+					<tr>
+						<td><br /><a href=$url>$courte</a><br /></td>
+					</tr>
+				</table>
+			</form>
+END;
+	}
+}
+
+
 url();
 if (isset($_POST['connecter'])) {
 	traiteConnexion();
 }
 else {
 	connecte();
+	if (isset($_POST['raccourci'])) {
+		traiteURL();
+	}
 }
+
 finHTML();
 ?>
