@@ -2,6 +2,7 @@
 require_once("tools.php");
 require_once("config.inc.php");
 require_once("Membre.php");
+require_once("Url.php");
 
 enteteTitreHTML("ConvertParadize");
 
@@ -45,7 +46,7 @@ function url(){
 				<table style="left:10%;top:50%;width:40%;font-size:2em;">
 					<tr>
 						<td><h2>Votre URL :</h2></td>
-						<td><input type="text" name="rac" value="Entrez une URL"/></td>
+						<td><input type="text" name="rac"/></td>
 						<td><input type="submit" value="Raccourcir" /></td>
 					</tr>
 				</table>
@@ -85,6 +86,14 @@ function traiteConnexion(){
 		}
 	}
 	
+	if ($password1 != "") {
+		$crypt = sha1($password1);
+		if ($crypt != Membre::pass_existe($p, $pseudo)) {
+			$message_erreur .= "Mot de passe invalide!<br>";
+			$erreur = true;
+		}
+	}
+	
 	if ($erreur){
 		connecte();
 		echo <<< MSG
@@ -110,6 +119,8 @@ END;
 
 
 function traiteURL(){
+	global $p; 
+	
 	$message = "";
 	$erreur = false;
 	
@@ -117,7 +128,7 @@ function traiteURL(){
 	$code = $url;
 	$url = strip_tags(trim($url));
 	
-	$courte = "http://www.ConPar.com/";
+	$courte = "http://".$_SERVER[SERVER_NAME].$_SERVER[PHP_SELF]."/";
 	
 	if ($url == "") {
 		$message .= "Entrez une URL.<br>";
@@ -136,6 +147,8 @@ MSG;
 		$min = rand (0, 35);
 		$code = substr($code, $min, 5);
 		$courte .= $code;
+		$cree = Url::insertion($p, $url, $courte, "");
+		
 		echo <<< END
 			<form method="post" action="index.php" name="url">
 				<table style="left:10%;top:70%;width:40%;font-size:2em;">
