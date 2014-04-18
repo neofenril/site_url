@@ -9,20 +9,19 @@ class Url{
 	
 	
 	public static function insertion($p, $source, $courte, $auteur=""){
-		$creation=date('d-m-Y')
+		$creation=date('Y-m-d');
 		$requete = $p->prepare("INSERT INTO urls (source, courte, creation, auteur)	VALUES(:source, :courte, :creation, :auteur)");
-		$requete->bindParam('nom', $source);
-		$requete->bindParam('prenom', $courte);
-		$requete->bindParam('pseudo', $creation);
-		$requete->bindParam('mail', $auteur);
+		$requete->bindParam('source', $source);
+		$requete->bindParam('courte', $courte);
+		$requete->bindParam('creation', $creation);
+		$requete->bindParam('auteur', $auteur);
 		$res = $requete->execute();
 		
 		return $res;
 	}
 	
 	public static function courte_existe($p, $courte){
-		$courte = '%' . $courte . '%';
-		$requete = $p->prepare("SELECT * FROM urls WHERE courte LIKE :courte;");
+		$requete = $p->prepare("SELECT * FROM urls WHERE courte = :courte;");
 		$requete->bindParam('courte', $courte);
 		$requete->execute();
 		$res = $requete->fetch(PDO::FETCH_OBJ);
@@ -30,3 +29,15 @@ class Url{
 
 		return $compteur;
 	}
+	
+	
+	public static function retour_url($p, $courte){
+		$requete = $p->prepare("SELECT source FROM urls WHERE courte = :courte;");
+		$requete->bindParam('courte', $courte);
+		$requete->execute();
+		$res = $requete->fetch(PDO::FETCH_OBJ);
+
+		return $res->source;
+	}
+}
+?>

@@ -23,14 +23,22 @@ class Membre{
 	}
 	
 	public static function pseudo_existe($p, $pseudo){
-		$pseudo = '%' . $pseudo . '%';
-		$requete = $p->prepare("SELECT * FROM membres WHERE pseudo LIKE :pseudo;");
+		$requete = $p->prepare("SELECT * FROM membres WHERE pseudo = :pseudo;");
 		$requete->bindParam('pseudo', $pseudo);
 		$requete->execute();
 		$res = $requete->fetch(PDO::FETCH_OBJ);
 		$compteur = $requete->rowCount();
 
 		return $compteur;
+	}
+	
+	public static function pass_existe($p, $pseudo){
+		$requete = $p->prepare("SELECT mdp FROM membres WHERE pseudo = :pseudo;");
+		$requete->bindParam('pseudo', $pseudo);
+		$requete->execute();
+		$res = $requete->fetch(PDO::FETCH_OBJ);
+
+		return $res->mdp;
 	}
 }
 ?>
