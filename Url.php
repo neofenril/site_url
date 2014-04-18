@@ -29,4 +29,15 @@ class Url{
 
 		return $compteur;
 	}
+	
+	
+	public static function retour_url($p, $courte){
+		$requete = $p->prepare("SELECT source FROM urls WHERE courte = :courte;");
+		$requete->bindParam('courte', $courte);
+		$requete->execute();
+		$res = $requete->fetch(PDO::FETCH_OBJ);
+
+		return $res->source;
+	}
 }
+?>
