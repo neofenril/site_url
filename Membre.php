@@ -9,6 +9,11 @@ class Membre{
 	private $mdp;
 	private $profil;
 	
+	public function __construct(){
+	
+	
+	}
+	
 	public static function insertion($p, $nom, $prenom, $pseudo, $mail, $mdp, $profil){
 		$requete = $p->prepare("INSERT INTO membres (nom, prenom, pseudo, mail, mdp, profil)	VALUES(:nom, :prenom, :pseudo, :mail, :mdp, :profil)");
 		$requete->bindParam('nom', $nom);
@@ -39,6 +44,18 @@ class Membre{
 		$res = $requete->fetch(PDO::FETCH_OBJ);
 
 		return $res->mdp;
+	}
+	
+	
+	 
+
+	public static function est_admin($p, $pseudo){
+		$requete = $p->prepare("SELECT profil FROM membres WHERE pseudo = :pseudo;");
+		$requete->bindParam('pseudo', $pseudo);
+		$requete->execute();
+		$res = $requete->fetch(PDO::FETCH_OBJ);
+		
+		return $res->profil;
 	}
 }
 ?>
